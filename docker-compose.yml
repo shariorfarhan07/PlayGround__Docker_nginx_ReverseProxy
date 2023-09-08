@@ -1,0 +1,25 @@
+version: '3'
+services:
+  instance1:
+    build: ./instance1
+    ports:
+      - "8001:80"
+
+  instance2:
+    build: ./instance2
+    ports:
+      - "8002:80"
+
+  instance3: 
+    build: ./instance3
+    ports:
+      - "8003:80"
+
+
+  nginx-load-balancer:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+ 
